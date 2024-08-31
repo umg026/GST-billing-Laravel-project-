@@ -14,9 +14,7 @@ use App\Http\Controllers\AppController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', [AppController::class, "index"]);
 
 // Basic routes
 Route::get('/about', [AppController::class, 'index']); // AppController is the controller file name and @index is the function name 
