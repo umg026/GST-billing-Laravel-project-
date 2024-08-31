@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Basic routes
+Route::get('/about', [AppController::class, 'index']); // AppController is the controller file name and @index is the function name 
+
+// With Parameter and optional parameter
+Route::get('/para/{id?}', function (){
+    return "<h1>Hello this is the params </h1>" ;
 });
+
+// name routes : pass the unique name to the route
+// when we pass name to routes that called reverse routing.
+Route::get('/contact',[AppController::class, 'contact'])->name("contact");
