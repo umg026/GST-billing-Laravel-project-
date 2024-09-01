@@ -9,6 +9,20 @@
     </div>
 
 </div>
+@if (session('status'))
+    <div class="alert alert-success">{{session('status')}}</div>
+@endif
+
+@if (count($errors))
+    <div class="alert alert-danger">
+        <strong>please fix this following issues</strong>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li> {{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <!-- end page title -->
 <div class="row">
     <div class="col-12">
@@ -39,59 +53,60 @@
                 id="tickets-table">
                 <thead>
                     <tr>
-                        <th>
-                            S.No.
-                        </th>
-                        <th>Bill No</th>
+                        <th>S.No.</th>
+                        <th>Invoice No</th>
                         <th>Cielnt's Info</th>
                         <th>Billing Info</th>
-                        <th>Date</th>
+                        <th>Invoice Date</th>
                         <th class="hidden-sm">Action</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td><b>#1256</b></td>
-                        <td>
-                            #5
-                        </td>
-
-                        <td>
-                            Joh Doe
-                        </td>
-
-                        <td>
-                            <ul class="list-unstyled">
-                                <li><b>Total Amount :</b><span> 555</span></li>
-                                <li><b>TAX :</b><span> 55</span></li>
-                                <li><b>Net Amount :</b><span> 55</span></li>
-                            </ul>
-                        </td>
-
-                        <td>
-                            01/09/2023
-                        </td>
-                        <td>
-                            <div class="btn-group dropdown">
-                                <a href="javascript: void(0);"
-                                    class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm"
-                                    data-toggle="dropdown" aria-expanded="false"><i
-                                        class="mdi mdi-dots-horizontal"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"><i
-                                            class="mdi mdi-alert-octagon-outline mr-2 text-muted font-18 vertical-middle"></i>Detail</button>
-                                    <a class="dropdown-item" href="#"><i
-                                            class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Delete</a>
-                                    <a class="dropdown-item" href="{{ route('print-gstBill') }}"><i
-                                            class="mdi mdi-printer mr-2 text-muted font-18 vertical-middle"></i>
-                                        Print</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                    @if (count($data))
+                        @foreach ($data as $index => $tableData)
+                            <tr>
+                                <td><b>{{$index + 1}}</b></td>
+                                <td><span class="badge badge-info">{{ $tableData->invoice_no }}</span></td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        <li><b>Name:</b> <span>{{ $tableData->party->full_name }}</span></li>
+                                        <li><b>Phone:</b> <span>{{ $tableData->party->phone_number }}</span></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        <li><b>Total Amount:</b> <span>{{$tableData->total_amount}}</span></li>
+                                        <li><b>TAX:</b> <span>{{$tableData->tax_amount}}</span></li>
+                                        <li><b>Net Amount:</b> <span>{{$tableData->net_amount}}</span></li>
+                                    </ul>
+                                </td>
+                                <td>{{ date("d-m-y", strtotime($tableData->created_at)) }}</td>
+                                <td>
+                                    <div class="btn-group dropdown">
+                                        <a href="javascript: void(0);"
+                                            class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm"
+                                            data-toggle="dropdown" aria-expanded="false">
+                                            <i class="mdi mdi-dots-horizontal"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                <i
+                                                    class="mdi mdi-alert-octagon-outline mr-2 text-muted font-18 vertical-middle"></i>Detail
+                                            </button>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Delete
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('print-gstBill', $tableData->id) }}"><i class="mdi mdi-printer mr-2 text-muted font-18 vertical-middle"></i>Print</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
+
             </table>
         </div><!-- end col -->
     </div>

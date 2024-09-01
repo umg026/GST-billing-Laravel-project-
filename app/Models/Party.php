@@ -28,4 +28,8 @@ class Party extends Model
         "zip_code",
         "branch_address",
     );
+
+    public function gstBills(){
+        return $this->hasMany(GstBill::class);
+    }
 }

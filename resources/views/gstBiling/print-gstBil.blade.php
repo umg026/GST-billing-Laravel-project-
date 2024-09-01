@@ -13,10 +13,10 @@
     </div>
 
     <div class="row">
+        @if ($bill)
         <div class="col-12">
             <div class="card-box">
-                <!-- Logo & title -->
-                <div class="clearfix ">
+                <div class="clearfix">
                     <div class="text-center">
                         <h1>ABC Company</h1>
                     </div>
@@ -54,28 +54,28 @@
                         <div class="row pl-2 pt-1">
                             <div class="col-12 d-flex justiy-content-start">
                                 <label for="">Name : </label>
-                                <input type="text" style="border: none; line-height: -10;">
-                            </div>
-                        </div>
-                        <div class="row pl-2">
-                            <div class="col-12 d-flex justiy-content-start">
-                                <label for="">Address : </label>
-                                <span></span>
+                                <span class="ml-1">{{ $bill->party->full_name }}</span>
                             </div>
                         </div>
                         <div class="row pl-2">
                             <div class="col-12 d-flex justiy-content-start">
                                 <label for="">Phone : </label>
-                                <span></span>
+                                <span class="ml-1">{{ $bill->party->phone_no }}</span>
+                            </div>
+                        </div>
+                        <div class="row pl-2">
+                            <div class="col-12 d-flex justiy-content-start">
+                                <label for="">Address : </label>
+                                <span class="ml-1">{{ $bill->party->address }}</span>
                             </div>
                         </div>
                         <div class="row pl-2 pb-1">
                             <div class="col-9 d-flex justiy-content-start">
                                 <label for="">State : </label>
-                                <span></span>
+                                <span class="ml-1">{{ $bill->party->state }}</span>
                             </div>
                             <div class="col-3 d-flex px-1">
-                                <label for="">State Code | <span><b></b></span> </label>
+                                <label for="">State Code | <span><b>{{ $bill->party->state_code }}</b></span> </label>
                             </div>
                         </div>
                     </div>
@@ -94,13 +94,13 @@
                         <div class="row pl-2">
                             <div class="col-12 d-flex justiy-content-start">
                                 <label for="">Invoice No : </label>
-                                <span></span>
+                                <span class="ml-1">{{ $bill->invoice_no }}</span>
                             </div>
                         </div>
                         <div class="row pl-2">
                             <div class="col-12 d-flex justiy-content-start">
                                 <label for="">Invoice Date : </label>
-                                <span></span>
+                                <span class="ml-1">{{ date("d F Y", strtotime($bill->invoice_date)) }}</span>
                             </div>
                         </div>
                         <div class="row pl-2 pb-1">
@@ -198,7 +198,8 @@
                     </div>
                 </div>
             </div> <!-- end card-box -->
-        </div> <!-- end col -->
+        </div> 
+        @endif
     </div>
     <!-- end row -->
 

@@ -191,6 +191,8 @@
 
 <!-- Dashboard 1 Init JS -->
 <script src="{{ asset('assets/js2/pages/dashboard-1.init.js') }}"></script>
+<script src="{{ asset('assets/js2/pages/script.js') }}"></script>
+
 
 <!-- App JS -->
 <script src="{{ asset('assets/js2/app.min.js') }}"></script>
