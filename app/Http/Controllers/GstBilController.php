@@ -13,8 +13,11 @@ class GstBilController extends Controller
    public function manageBill (){
     return view('gstBiling.manageBils');
    }
-
-   public function printBill(){
+   public function printBill (){
       return view('gstBiling.print-gstBil');
+     }
+
+   public function createInvoice(){
+      return view('gstBiling.createInvoice');
    }
 }

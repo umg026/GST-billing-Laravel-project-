@@ -35,6 +35,8 @@ Route::get('/manage-gst', [GstBilController::class, 'manageBill'])
 Route::get('/print-gst', [GstBilController::class, 'printBill'])
 ->name('print-gstBill');
 
+Route::get('/create-invoice', [GstBilController::class, 'createInvoice'])
+->name('createInvoice');
 // Basic routes
 // Route::get('/about', [AppController::class, 'index']); // AppController is the controller file name and @index is the function name 
 
