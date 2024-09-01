@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title font-weight-bold text-uppercase"> Add Clients </h4>
+                <h4 class="page-title font-weight-bold text-uppercase"> update Clients </h4>
             </div>
         </div>
     </div>
@@ -17,9 +17,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    @if (session('status'))
-                        <div class="alert alert-success">{{session('status')}}</div>
-                    @endif
+                    
 
                     @if (count($errors))
                         <div class="alert alert-danger">
@@ -30,28 +28,29 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif
+                    @endif 
 
                     <h4 class="header-title text-uppercase"> Basic Info</h4>
                     <hr>
-                    <form class="needs-validation" method="post" action="{{ route('createParty') }}">
+                    <form class="needs-validation" method="post" action="{{ route('updateParty', $party) }}">
                         @csrf
+                        @method('put')
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
                                     <label for="validationCustom01">Type</label>
                                     <select name="party_type" class="form-control border-bottom "
                                         id="validationCustom01" placeholder="Please select Type">
-                                        <option value="client">Client</option>
-                                        <option value="vendor">Vendor</option>
-                                        <option value="employee">Employee</option>
+                                        <option value="client" @if ($party->party_type == "client") selected @endif >Client</option>
+                                        <option value="vendor" @if ($party->party_type == "vendor") selected  @endif>Vendor</option>
+                                        <option value="employee" @if ($party->party_type == "employee") selected  @endif >Employee</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
                                     <label for="validationCustom01">Full Name</label>
-                                    <input type="text" name="full_name" class="form-control border-bottom "
+                                    <input type="text" value="{{ $party->full_name }}" name="full_name" class="form-control border-bottom "
                                         id="validationCustom01" placeholder="Enter client's full name">
                                     <div class="invalid-feedback">
                                         Please provide a Full name.
@@ -61,7 +60,7 @@
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
                                     <label for="validationCustom02">Phone/Mobile Number</label>
-                                    <input type="text" name="phone_number" class="form-control border-bottom "
+                                    <input type="text" value="{{ $party->phone_number }}" name="phone_number" class="form-control border-bottom "
                                         id="validationCustom02" placeholder="Enter phone/mobile number">
                                     <div class="invalid-feedback">
                                         Please provide a Number.
@@ -74,7 +73,7 @@
                             <div class="col-md-12">
                                 <div class="form-group mb-3">
                                     <label for="validationCustom03">Address</label>
-                                    <input name="address" type="text" class="form-control border-bottom "
+                                    <input value="{{ $party->address }}" name="address" type="text" class="form-control border-bottom "
                                         id="validationCustom02" placeholder="Enter Address">
                                     <div class="invalid-feedback">
                                         Please provide a valid Address.
@@ -90,7 +89,7 @@
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
                                     <label for="validationCustom04">Account Holder Name</label>
-                                    <input name="account_holder_name" type="text" class="form-control border-bottom "
+                                    <input value="{{ $party->account_holder_name }}" name="account_holder_name" type="text" class="form-control border-bottom "
                                         id="validationCustom04" placeholder="Enter Accoumt Holder name">
                                     <div class="invalid-feedback">
                                         Please provide a valid state.
@@ -101,7 +100,7 @@
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
                                     <label for="validationCustom05">Account Number</label>
-                                    <input name="account_no" type="text" class="form-control border-bottom "
+                                    <input name="account_no" value="{{ $party->account_no }}" type="text" class="form-control border-bottom "
                                         id="validationCustom05" placeholder="Enter Account Number">
                                     <div class="invalid-feedback">
                                         Please provide a valid Code.
@@ -113,7 +112,7 @@
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
                                     <label for="validationCustom02">Bank Name</label>
-                                    <input name="bankname" type="text" class="form-control border-bottom "
+                                    <input name="bankname" type="text" value="{{ $party->bankname }}" class="form-control border-bottom "
                                         id="validationCustom02" placeholder="Enter Bank Name">
                                     <div class="invalid-feedback">
                                         Please provide a GSTIN No.
@@ -126,7 +125,7 @@
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
                                     <label for="validationCustom02">IFSC Code</label>
-                                    <input name="isfc_code" type="text" class="form-control border-bottom "
+                                    <input name="isfc_code" type="text" value="{{ $party->isfc_code }}" class="form-control border-bottom "
                                         id="validationCustom02" placeholder="Enter IFSC Code">
                                     <div class="invalid-feedback">
                                         Please provide a Email.
@@ -137,7 +136,7 @@
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
                                     <label for="validationCustom02">ZIP Code</label>
-                                    <input name="zip_code" type="text" class="form-control border-bottom "
+                                    <input name="zip_code" type="text" value="{{ $party->zip_code }}" class="form-control border-bottom "
                                         id="validationCustom02" placeholder="Enter ZIP Code">
                                     <div class="invalid-feedback">
                                         Please provide a Zip.
@@ -148,7 +147,7 @@
                             <div class="col-md-4">
                                 <div class="form-group mb-3">
                                     <label for="validationCustom02">State</label>
-                                    <input name="state" type="text" class="form-control border-bottom "
+                                    <input name="state" type="text" value="{{ $party->state }}" class="form-control border-bottom "
                                         id="validationCustom02" placeholder="Enter State">
                                     <div class="invalid-feedback">
                                         Please provide a State.
@@ -160,7 +159,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="validationCustom02">Branch</label>
-                                <input name="branch_address" type="text" class="form-control border-bottom "
+                                <input name="branch_address" type="text" value="{{ $party->branch_address }}" class="form-control border-bottom "
                                     id="validationCustom02" placeholder="Enter Branch">
                                 <div class="invalid-feedback">
                                     Please provide a Branch Name.

@@ -18,12 +18,39 @@ use App\Http\Controllers\AppController;
 
 Route::get('/', [AppController::class, "index"])->name('home');
 
+/*
+|--------------------------------------------------------------------------
+| PARTY CONTROL ROUTES
+|--------------------------------------------------------------------------
+|
+*/
+
 // party controller
 Route::get('/add-party', [PartyController::class, 'addParty'])
 ->name('add-party');
 
 Route::get('/manage-party', [PartyController::class, 'manageParty'])
 ->name('manage-party');
+// edit party using db operations
+Route::get('/edit-party/{id}', [PartyController::class, 'editParty'])
+->name('edit-party');
+
+// manage DB route
+Route::post('/create-party', [PartyController::class, 'createParty'])
+->name('createParty');
+
+Route::put('/update-party/{id}',[PartyController::class, 'updateParty'])
+->name('updateParty');
+
+Route::delete('/delete-party/{party}',[PartyController::class, 'deleteParty'])
+->name('deleteParty');
+
+/*
+|--------------------------------------------------------------------------
+| GST BIILING ROUTES
+|--------------------------------------------------------------------------
+|
+*/
 
 // GST Biling Routes :
 Route::get('/add-gst', [GstBilController::class, 'addBill'])
@@ -37,14 +64,3 @@ Route::get('/print-gst', [GstBilController::class, 'printBill'])
 
 Route::get('/create-invoice', [GstBilController::class, 'createInvoice'])
 ->name('createInvoice');
-// Basic routes
-// Route::get('/about', [AppController::class, 'index']); // AppController is the controller file name and @index is the function name 
-
-// // With Parameter and optional parameter
-// Route::get('/para/{id?}', function (){
-//     return "<h1>Hello this is the params </h1>" ;
-// });
-
-// // name routes : pass the unique name to the route
-// // when we pass name to routes that called reverse routing.
-// Route::get('/contact',[AppController::class, 'contact'])->name("contact");

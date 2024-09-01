@@ -8,19 +8,23 @@
   <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
   <meta content="Coderthemes" name="author" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  
-  <link href="assets/css2/bootstrap-creative.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-  <link href="assets/css2/app-creative.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
-  <link href="assets/css2/bootstrap-creative-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet"
-    disabled />
-  <link href="assets/css2/app-creative-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet"
-    disabled />
+  <link href="{{ asset('assets/css2/bootstrap-creative.min.css') }}" rel="stylesheet" type="text/css"
+    id="bs-default-stylesheet" />
+  <link href="{{ asset('assets/css2/app-creative.min.css') }}" rel="stylesheet" type="text/css"
+    id="app-default-stylesheet" />
 
-  <link href="assets/css2/icons.min.css" rel="stylesheet" type="text/css" />
+  <!-- Dark Mode CSS (disabled by default) -->
+  <link href="{{ asset('assets/css2/bootstrap-creative-dark.min.css') }}" rel="stylesheet" type="text/css"
+    id="bs-dark-stylesheet" disabled />
+  <link href="{{ asset('assets/css2/app-creative-dark.min.css') }}" rel="stylesheet" type="text/css"
+    id="app-dark-stylesheet" disabled />
 
-  <link rel="stylesheet" href="style.css">
+  <!-- Icons CSS -->
+  <link href="{{ asset('assets/css2/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="{{ asset('style.css') }}">
 </head>
 
 <body data-layout-mode="detached"
@@ -37,7 +41,7 @@
           <li class="dropdown notification-list topbar-dropdown">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#"
               role="button" aria-haspopup="false" aria-expanded="false">
-              <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle" />
+              <img src="{{ asset("assets/images/users/user-1.jpg") }}" alt="user-image" class="rounded-circle" />
               <span class="pro-user-name ml-1">
                 Geneva <i class="mdi mdi-chevron-down"></i>
               </span>
@@ -47,16 +51,11 @@
               <div class="dropdown-header noti-title">
                 <h6 class="text-overflow m-0">Welcome !</h6>
               </div>
-
-              <!-- item-->
               <a href="javascript:void(0);" class="dropdown-item notify-item">
                 <i class="fe-user"></i>
                 <span>My Account</span>
               </a>
-
               <div class="dropdown-divider"></div>
-
-              <!-- item-->
               <a href="javascript:void(0);" class="dropdown-item notify-item">
                 <i class="fe-log-out"></i>
                 <span>Logout</span>
@@ -64,17 +63,14 @@
             </div>
           </li>
         </ul>
-
         <!-- LOGO -->
         <div class="logo-box">
           <a href="index.html" class="logo logo-dark text-center">
             <span class="logo-sm">
               <img src="assets/images/logo-sm.png" alt="" height="22" />
-              <!-- <span class="logo-lg-text-light">UBold</span> -->
             </span>
             <span class="logo-lg">
               <img src="assets/images/logo-dark.png" alt="" height="20" />
-              <!-- <span class="logo-lg-text-light">U</span> -->
             </span>
           </a>
 
@@ -94,9 +90,7 @@
               <i class="fe-menu"></i>
             </button>
           </li>
-
           <li>
-            <!-- Mobile menu toggle (Horizontal Layout)-->
             <a class="navbar-toggle nav-link" data-toggle="collapse" data-target="#topnav-menu-content">
               <div class="lines">
                 <span></span>
@@ -104,20 +98,18 @@
                 <span></span>
               </div>
             </a>
-            <!-- End mobile menu toggle-->
           </li>
         </ul>
         <div class="clearfix"></div>
       </div>
     </div>
-    <!-- end Topbar -->
 
     <!-- ========== Left Sidebar Start ========== -->
     <div class="left-side-menu">
       <div class="h-100" data-simplebar>
         <!-- User box -->
         <div class="user-box text-center">
-          <img src="assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md" />
+          <img src="{{ asset("assets/images/users/user-1.jpg") }}" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md" />
           <p class="text-muted mt-2">Admin Head</p>
         </div>
 
@@ -171,13 +163,9 @@
             </li>
           </ul>
         </div>
-        <!-- End Sidebar -->
-
         <div class="clearfix"></div>
       </div>
-      <!-- Sidebar -left -->
     </div>
-    <!-- Left Sidebar End -->
 
     <!-- ============================================================== -->
     <!-- Start Page Content here -->
@@ -194,21 +182,19 @@
     <!-- ============================================================== -->
   </div>
 
-  <!-- Right bar overlay-->
-  <div class="rightbar-overlay"></div>
+<!-- Vendor JS -->
+<script src="{{ asset('assets/js2/vendor.min.js') }}"></script>
 
-  <!-- Vendor js -->
-  <script src="assets/js2/vendor.min.js"></script>
+<!-- Plugins JS -->
+<script src="{{ asset('assets/libs2/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ asset('assets/libs2/apexcharts/apexcharts.min.js') }}"></script>
 
-  <!-- Plugins js-->
-  <script src="assets/libs2/flatpickr/flatpickr.min.js"></script>
-  <script src="assets/libs2/apexcharts/apexcharts.min.js"></script>
+<!-- Dashboard 1 Init JS -->
+<script src="{{ asset('assets/js2/pages/dashboard-1.init.js') }}"></script>
 
-  <!-- Dashboar 1 init js-->
-  <script src="assets/js2/pages/dashboard-1.init.js"></script>
+<!-- App JS -->
+<script src="{{ asset('assets/js2/app.min.js') }}"></script>
 
-  <!-- App js-->
-  <script src="assets/js2/app.min.js"></script>
 </body>
 
 </html>
