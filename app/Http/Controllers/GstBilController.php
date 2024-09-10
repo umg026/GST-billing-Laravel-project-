@@ -43,6 +43,7 @@ class GstBilController extends Controller
          'igst_rate' => 'nullable|min:0|max:100',
          'igst_amount' => 'numeric|min:0',
          'tax_amount' => 'numeric|min:0',
+         'declaration' => 'required|min:0|max:250',
          'net_amount' => 'required|numeric|min:0',
       ]);
       $params = $request->all();

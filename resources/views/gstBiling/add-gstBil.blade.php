@@ -143,7 +143,7 @@
                             <div class="row mt-3">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control border-bottom" id="validationCustom05"
+                                        <input type="text" class="form-control border-bottom" name="declaration" id="validationCustom05"
                                             placeholder="Declaration">
                                     </div>
 

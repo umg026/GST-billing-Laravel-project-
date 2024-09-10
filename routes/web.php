@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\GstBilController;
 use App\Http\Controllers\PartyController;
 use Illuminate\Support\Facades\Route;
@@ -68,3 +69,36 @@ Route::get('/create-invoice', [GstBilController::class, 'createInvoice'])
 
 Route::post('/create-gstBill', [GstBilController::class, 'createGstBill'])
 ->name('create-gstbill');
+
+/*
+|--------------------------------------------------------------------------
+| Company details ROUTES
+|--------------------------------------------------------------------------
+|
+*/
+// company details Routes :
+Route::get('/add-company', [CompanyController::class, 'addCompany'])
+->name('add-company');
+
+Route::get('/manage-company', [CompanyController::class, 'manageCompany'])
+->name('manage-company');
+
+// edit party using db operations
+Route::get('/edit-company/{id}', [CompanyController::class, 'editCompany'])
+->name('edit-company');
+
+Route::get('/delete-company/{id}', [CompanyController::class, 'deleteCompany'])
+->name('delete-company');
+
+// manage DB route
+Route::post('/create-company', [CompanyController::class, 'createCompany'])
+->name('createCompany');
+
+Route::put('/update-company/{id}',[CompanyController::class, 'updateParty'])
+->name('updateParty');
+
+Route::delete('/delete-company/{party}',[CompanyController::class, 'deleteParty'])
+->name('deleteParty');
+Auth::routes(); // Authentication route
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

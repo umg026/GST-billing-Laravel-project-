@@ -161,6 +161,25 @@
                 </ul>
               </div>
             </li>
+            <li>
+              <a href="#sidebarCrmdc" data-toggle="collapse">
+                <i data-feather="edit"></i>
+                <span> Company </span>
+                <span class="menu-arrow"></span>
+              </a>
+              <div class="collapse" id="sidebarCrmdc">
+                <ul class="nav-second-level">
+                  <li>
+                    <a href="{{ route('add-company') }}"><i data-feather="plus" class="pr-0 mr-1"></i>Create
+                      Company</a>
+                  </li>
+                  <li>
+                    <a href="{{ route('manage-company') }}"><i data-feather="list" class="pr-0 mr-1"></i>Manage all
+                      Company</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
           </ul>
         </div>
         <div class="clearfix"></div>
