@@ -56,10 +56,14 @@
                 <span>My Account</span>
               </a>
               <div class="dropdown-divider"></div>
-              <a href="javascript:void(0);" class="dropdown-item notify-item">
+              <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                 document.getElementById('logout-form').submit();" class="dropdown-item notify-item">
                 <i class="fe-log-out"></i>
                 <span>Logout</span>
               </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+              </form>
             </div>
           </li>
         </ul>
@@ -109,7 +113,8 @@
       <div class="h-100" data-simplebar>
         <!-- User box -->
         <div class="user-box text-center">
-          <img src="{{ asset("assets/images/users/user-1.jpg") }}" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md" />
+          <img src="{{ asset("assets/images/users/user-1.jpg") }}" alt="user-img" title="Mat Helme"
+            class="rounded-circle avatar-md" />
           <p class="text-muted mt-2">Admin Head</p>
         </div>
 
@@ -201,20 +206,20 @@
     <!-- ============================================================== -->
   </div>
 
-<!-- Vendor JS -->
-<script src="{{ asset('assets/js2/vendor.min.js') }}"></script>
+  <!-- Vendor JS -->
+  <script src="{{ asset('assets/js2/vendor.min.js') }}"></script>
 
-<!-- Plugins JS -->
-<script src="{{ asset('assets/libs2/flatpickr/flatpickr.min.js') }}"></script>
-<script src="{{ asset('assets/libs2/apexcharts/apexcharts.min.js') }}"></script>
+  <!-- Plugins JS -->
+  <script src="{{ asset('assets/libs2/flatpickr/flatpickr.min.js') }}"></script>
+  <script src="{{ asset('assets/libs2/apexcharts/apexcharts.min.js') }}"></script>
 
-<!-- Dashboard 1 Init JS -->
-<script src="{{ asset('assets/js2/pages/dashboard-1.init.js') }}"></script>
-<script src="{{ asset('assets/js2/pages/script.js') }}"></script>
+  <!-- Dashboard 1 Init JS -->
+  <script src="{{ asset('assets/js2/pages/dashboard-1.init.js') }}"></script>
+  <script src="{{ asset('assets/js2/pages/script.js') }}"></script>
 
 
-<!-- App JS -->
-<script src="{{ asset('assets/js2/app.min.js') }}"></script>
+  <!-- App JS -->
+  <script src="{{ asset('assets/js2/app.min.js') }}"></script>
 
 </body>
 

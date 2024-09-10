@@ -7,21 +7,14 @@ use App\Models\Party;
 
 class AppController extends Controller
 {
+
+   public function __construct()
+   {
+       $this->middleware('auth');
+   }
    public function index() 
    {
-      return view('dashboard');
-
-
-
-      // Insert Operations: 
-      // $party = new Party;
-      // $party->full_name = "umang prajapati";
-      // // $party->save();
-
-      // // ======== SELECT ALL data from DB =================
-      //  $parties = Party::all();
-      //  dd($parties) ;
-      // return "Database operations";
+      return redirect()->route('home');
    }
 
    public function contact () 

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class GstBilController extends Controller
 {
+
+   public function __construct()
+   {
+       $this->middleware('auth');
+   }
    public function addBill (){
     $data['parties'] = Party::where('party_type', 'client')->orderBy('full_name')->get();
 
